@@ -42,3 +42,24 @@ collections:
         - { name: categoryId, label: Category ID, widget: string }
         - { name: guideId, label: Guide ID, widget: string }
     - { name: body, label: Body, widget: markdown }
+
+- name: appPublic
+  label: "app/public"
+  folder: docs/app/public
+  identifier_field: title
+  extension: md
+  create: true
+  slug: "{{id}}"
+  fields:
+    - { name: id, label: Id, widget: string } 
+    - { name: title, label: Title, widget: string } 
+    - { name: subtitle, label: Subtitle, widget: string, required: false}
+    - { name: sidebar_position, label: Sidebar Position, widget: number }
+    - name: metadata
+      label: Metadata
+      widget: object
+      fields:
+        - { name: pageId, label: Page ID, widget: string }
+        - { name: categoryId, label: Category ID, widget: string }
+        - { name: guideId, label: Guide ID, widget: string }
+    - { name: body, label: Body, widget: markdown }
