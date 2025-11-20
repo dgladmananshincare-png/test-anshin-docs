@@ -1,4 +1,5 @@
 import {themes as prismThemes} from 'prism-react-renderer';
+import netlifyCmsConfigPlugin from './plugins/netlifyCmsConfig';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
@@ -42,6 +43,8 @@ const config: Config = {
     ],
   ],
   plugins: [
+    // Generates Netlify CMS config (admin/config.yml) at build-time based on docs/app folder structure.
+    netlifyCmsConfigPlugin,
     [
       '@docusaurus/plugin-content-docs',
       {
