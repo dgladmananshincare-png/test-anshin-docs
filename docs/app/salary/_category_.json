@@ -1,0 +1,12 @@
+{
+    "label": "給与計算",
+    "position": 4,
+    "collapsible": true,
+    "collapsed": false,
+    "link": {
+        "type": "generated-index",
+        "slug": "/salary",
+        "description": "給与計算のドキュメントへようこそ。ここでは、Anshinの給与計算機能について説明します。",
+        "keywords": ["Anshin", "給与計算", "基本"]
+    }
+}

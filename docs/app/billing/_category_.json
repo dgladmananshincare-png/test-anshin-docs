@@ -1,0 +1,12 @@
+{
+    "label": "請求管理",
+    "position": 7,
+    "collapsible": true,
+    "collapsed": false,
+    "link": {
+        "type": "generated-index",
+        "slug": "/billing",
+        "description": "請求管理のドキュメントへようこそ。ここでは、Anshinの請求管理機能について説明します。",
+        "keywords": ["Anshin", "請求管理", "基本"]
+    }
+}

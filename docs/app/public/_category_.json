@@ -1,0 +1,12 @@
+{
+    "label": "共通機能",
+    "position": 2,
+    "collapsible": true,
+    "collapsed": false,
+    "link": {
+        "type": "generated-index",
+        "slug": "/public",
+        "description": "共通機能のドキュメントへようこそ。ここでは、Anshinの共通機能について説明します。",
+        "keywords": ["Anshin", "共通機能", "基本"]
+    }
+}

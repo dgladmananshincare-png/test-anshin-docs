@@ -1,0 +1,12 @@
+{
+    "label": "勤怠管理",
+    "position": 3,
+    "collapsible": true,
+    "collapsed": false,
+    "link": {
+        "type": "generated-index",
+        "slug": "/attendance",
+        "description": "勤怠管理のドキュメントへようこそ。ここでは、Anshinの勤怠管理機能について説明します。",
+        "keywords": ["Anshin", "勤怠管理", "基本"]
+    }
+}

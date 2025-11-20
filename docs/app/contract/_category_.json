@@ -1,0 +1,12 @@
+{
+    "label": "電子署名管理",
+    "position": 5,
+    "collapsible": true,
+    "collapsed": false,
+    "link": {
+        "type": "generated-index",
+        "slug": "/contract",
+        "description": "電子署名管理のドキュメントへようこそ。ここでは、Anshinの電子署名管理機能について説明します。",
+        "keywords": ["Anshin", "電子署名管理", "基本"]
+    }
+}
