@@ -1,0 +1,10 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.customerSidebar.doc.Customer": {
+    "message": "Customer",
+    "description": "The label for the doc item Customer in sidebar customerSidebar, linking to the doc status"
+  }
+}

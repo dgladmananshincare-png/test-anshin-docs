@@ -1,0 +1,26 @@
+{
+  "title": {
+    "message": "TEST Anshin Docs",
+    "description": "The title in the navbar"
+  },
+  "logo.alt": {
+    "message": "Logo",
+    "description": "The alt text of navbar logo"
+  },
+  "item.label.App": {
+    "message": "App",
+    "description": "Navbar item with label App"
+  },
+  "item.label.Customer": {
+    "message": "Customer",
+    "description": "Navbar item with label Customer"
+  },
+  "item.label.Reserve": {
+    "message": "Reserve",
+    "description": "Navbar item with label Reserve"
+  },
+  "item.label.更新履歴": {
+    "message": "更新履歴",
+    "description": "Navbar item with label 更新履歴"
+  }
+}

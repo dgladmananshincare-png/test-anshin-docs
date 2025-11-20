@@ -1,0 +1,10 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.reserveSidebar.doc.Reserve": {
+    "message": "Reserve",
+    "description": "The label for the doc item Reserve in sidebar reserveSidebar, linking to the doc status"
+  }
+}
