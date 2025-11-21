@@ -15,9 +15,9 @@ slug:
   clean_accents: true
   sanitize_replacement: _
 collections:
-  - name: app_aggregate
-    label: app/aggregate
-    folder: docs/app/aggregate
+  - name: app
+    label: app
+    folder: docs/app
     identifier_field: title
     extension: md
     create: true
@@ -52,6 +52,14 @@ collections:
       - name: body
         label: Body
         widget: markdown
+  - name: app_aggregate
+    label: app/aggregate
+    folder: docs/app/aggregate
+    identifier_field: title
+    extension: md
+    create: true
+    slug: "{{id}}"
+    fields: *a1
   - name: app_attendance
     label: app/attendance
     folder: docs/app/attendance
