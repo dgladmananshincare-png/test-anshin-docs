@@ -1,6 +1,5 @@
 import {themes as prismThemes} from 'prism-react-renderer';
 import netlifyCmsConfigPlugin from './plugins/netlifyCmsConfig';
-import generateVercelConfigPlugin from './plugins/generateVercelConfig';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
@@ -46,8 +45,6 @@ const config: Config = {
   plugins: [
     // Generates Netlify CMS config (admin/config.yml) at build-time based on docs/app folder structure.
     ...(process.env.DOCUSAURUS_ENV === 'stg' ? [netlifyCmsConfigPlugin] : []),
-    // Generates vercel.json in root based on DOCUSAURUS_ENV (adds /admin block unless staging).
-    generateVercelConfigPlugin,
     [
       '@docusaurus/plugin-content-docs',
       {
