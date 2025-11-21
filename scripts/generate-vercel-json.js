@@ -17,7 +17,7 @@ if (env === 'stg') {
 } else {
   // Production (any non-stg): block /admin only
   vercelConfig = {
-    rewrites: [{ source: '/admin', destination: '/404' }],
+    rewrites: [{ source: '/admin#', destination: '/404' }],
     github: { silent: true },
   };
 }
