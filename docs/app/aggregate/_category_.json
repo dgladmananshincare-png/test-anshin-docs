@@ -1,0 +1,12 @@
+{
+    "label": "集計・分析",
+    "position": 8,
+    "collapsible": true,
+    "collapsed": false,
+    "link": {
+        "type": "generated-index",
+        "slug": "/aggregate",
+        "description": "集計・分析のドキュメントへようこそ。ここでは、Anshinの集計・分析機能について説明します。",
+        "keywords": ["Anshin", "集計・分析", "基本"]
+    }
+}

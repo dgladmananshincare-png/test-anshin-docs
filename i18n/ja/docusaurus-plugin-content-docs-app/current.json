@@ -1,0 +1,90 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.appSidebar.category.ガイド & マニュアル": {
+    "message": "ガイド & マニュアル",
+    "description": "The label for category ガイド & マニュアル in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.ガイド & マニュアル.link.generated-index.title": {
+    "message": "ガイド & マニュアル",
+    "description": "The generated-index page title for category ガイド & マニュアル in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.ガイド & マニュアル.link.generated-index.description": {
+    "message": "アプリ全体の目次（TOC）です。各章に進むには以下のカードを選択してください。",
+    "description": "The generated-index page description for category ガイド & マニュアル in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.スタートガイド": {
+    "message": "スタートガイド",
+    "description": "The label for category スタートガイド in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.スタートガイド.link.generated-index.description": {
+    "message": "ストガイドへようこそ。ここでは、Anshinの基本的な使い方を説明します。",
+    "description": "The generated-index page description for category スタートガイド in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.共通機能": {
+    "message": "共通機能",
+    "description": "The label for category 共通機能 in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.共通機能.link.generated-index.description": {
+    "message": "共通機能のドキュメントへようこそ。ここでは、Anshinの共通機能について説明します。",
+    "description": "The generated-index page description for category 共通機能 in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.勤怠管理": {
+    "message": "勤怠管理",
+    "description": "The label for category 勤怠管理 in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.勤怠管理.link.generated-index.description": {
+    "message": "勤怠管理のドキュメントへようこそ。ここでは、Anshinの勤怠管理機能について説明します。",
+    "description": "The generated-index page description for category 勤怠管理 in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.給与計算": {
+    "message": "給与計算",
+    "description": "The label for category 給与計算 in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.給与計算.link.generated-index.description": {
+    "message": "給与計算のドキュメントへようこそ。ここでは、Anshinの給与計算機能について説明します。",
+    "description": "The generated-index page description for category 給与計算 in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.電子署名管理": {
+    "message": "電子署名管理",
+    "description": "The label for category 電子署名管理 in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.電子署名管理.link.generated-index.description": {
+    "message": "電子署名管理のドキュメントへようこそ。ここでは、Anshinの電子署名管理機能について説明します。",
+    "description": "The generated-index page description for category 電子署名管理 in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.サービス・商品管理": {
+    "message": "サービス・商品管理",
+    "description": "The label for category サービス・商品管理 in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.サービス・商品管理.link.generated-index.description": {
+    "message": "サービス・商品管理のドキュメントへようこそ。ここでは、Anshinのサービス・商品管理機能について説明します。",
+    "description": "The generated-index page description for category サービス・商品管理 in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.請求管理": {
+    "message": "請求管理",
+    "description": "The label for category 請求管理 in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.請求管理.link.generated-index.description": {
+    "message": "請求管理のドキュメントへようこそ。ここでは、Anshinの請求管理機能について説明します。",
+    "description": "The generated-index page description for category 請求管理 in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.集計・分析": {
+    "message": "集計・分析",
+    "description": "The label for category 集計・分析 in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.集計・分析.link.generated-index.description": {
+    "message": "集計・分析のドキュメントへようこそ。ここでは、Anshinの集計・分析機能について説明します。",
+    "description": "The generated-index page description for category 集計・分析 in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.介護・障害福祉サービス": {
+    "message": "介護・障害福祉サービス",
+    "description": "The label for category 介護・障害福祉サービス in sidebar appSidebar"
+  },
+  "sidebar.appSidebar.category.介護・障害福祉サービス.link.generated-index.description": {
+    "message": "介護・障害福祉サービスのドキュメントへようこそ。ここでは、Anshinの介護・障害福祉サービス機能について説明します。",
+    "description": "The generated-index page description for category 介護・障害福祉サービス in sidebar appSidebar"
+  }
+}

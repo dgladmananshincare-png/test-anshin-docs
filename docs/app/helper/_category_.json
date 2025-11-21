@@ -1,0 +1,12 @@
+{
+    "label": "介護・障害福祉サービス",
+    "position": 9,
+    "collapsible": true,
+    "collapsed": false,
+    "link": {
+        "type": "generated-index",
+        "slug": "/helper",
+        "description": "介護・障害福祉サービスのドキュメントへようこそ。ここでは、Anshinの介護・障害福祉サービス機能について説明します。",
+        "keywords": ["Anshin", "介護", "障害福祉", "基本"]
+    }
+}
