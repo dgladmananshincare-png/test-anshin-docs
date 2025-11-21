@@ -1,4 +1,13 @@
 # This is a dummy config.yml file.
 backend:
   name: dummy
-collections: []
+media_folder: "static/img/guide"
+media_library:
+  name: "" # minimal dummy value
+collections:
+  - name: dummy
+    label: Dummy
+    files:
+      - file: "dummy.md"
+        label: "Dummy File"
+        name: "dummy"
