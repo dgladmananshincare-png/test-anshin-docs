@@ -1,0 +1,4 @@
+# This is a dummy config.yml file.
+backend:
+  name: dummy
+collections: []
