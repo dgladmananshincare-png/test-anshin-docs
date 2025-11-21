@@ -1,7 +1,0 @@
-# Folders to exclude from main
-static/admin/** merge=ours
-api/** merge=ours
-lib/** merge=ours
-
-# Files to exclude from main
-vercel.json merge=ours
