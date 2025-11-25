@@ -69,9 +69,14 @@ function setSidebarPositionFrontmatter(content, position){
 
 try {
   const content = fs.readFileSync(safe,'utf8');
-  const updated = setSidebarPositionFrontmatter(content, nextPosition);
-  fs.writeFileSync(safe, updated);
-  log('Updated file:', safe, 'sidebar_position =', nextPosition);
+  const hasSidebarPosition = /sidebar_position:\s*\d+/.test(content);
+  if (!hasSidebarPosition) {
+    const updated = setSidebarPositionFrontmatter(content, nextPosition);
+    fs.writeFileSync(safe, updated);
+    log('Updated file:', safe, 'sidebar_position =', nextPosition);
+  } else {
+    log('sidebar_position already present, no change:', safe);
+  }
 } catch (e){
   log('Failed to update file', safe, e.message);
 }

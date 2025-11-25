@@ -3,7 +3,7 @@ name: Auto Assign Sidebar Position
 on:
   pull_request:
     branches: [stg]
-    types: [opened, synchronize, reopened, closed]
+    types: [closed]
 
 jobs:
   assign:
@@ -12,26 +12,17 @@ jobs:
       contents: write
       pull-requests: read
     steps:
-      - name: Checkout PR branch
+      - name: Checkout stg branch (after merge)
+        if: ${{ github.event.action == 'closed' && github.event.pull_request.merged == true }}
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.pull_request.base.ref }}
           fetch-depth: 0
 
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-
-      - name: Determine added markdown files (open/update)
-        if: ${{ github.event.action != 'closed' }}
-        id: added_open
-        run: |
-          git fetch origin ${{ github.event.pull_request.base.ref }}
-          ADDED=$(git diff --name-status origin/${{ github.event.pull_request.base.ref }}...HEAD | awk '/^A/ && $2 ~ /\.md$/ {print $2}')
-          echo "added_files<<EOF" >> $GITHUB_OUTPUT
-          echo "$ADDED" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Determine added markdown files (merged)
         if: ${{ github.event.action == 'closed' && github.event.pull_request.merged == true }}
@@ -57,7 +48,7 @@ jobs:
           echo "Collected added files:"; echo "$FILES"
 
       - name: Run sidebar position assignment
-        if: ${{ env.FILES != '' }}
+        if: ${{ env.FILES != '' && github.event.action == 'closed' && github.event.pull_request.merged == true }}
         run: |
           node scripts/assign-sidebar-position.js "$FILES"
 
