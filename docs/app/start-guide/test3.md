@@ -1,4 +1,5 @@
 ---
+sidebar_position: 7
 id: test3
 title: test3 - multiple files simultaneous dev part 2
 ---
