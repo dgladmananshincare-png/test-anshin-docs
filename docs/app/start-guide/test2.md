@@ -1,4 +1,5 @@
 ---
+sidebar_position: 8
 id: test2
 title: test2 - multiple files simultaneous dev
 ---
