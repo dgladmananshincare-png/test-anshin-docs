@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 7
 id: test1
 title: test1
 ---
