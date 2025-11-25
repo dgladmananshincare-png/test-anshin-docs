@@ -47,7 +47,7 @@ for (const entry of entries){
   }
 }
 
-const nextPosition = maxPosition + 1;
+const nextPosition = Number(maxPosition) + 1;
 log('Assigning sidebar_position', nextPosition, 'to', safe);
 
 // Always set sidebar_position at the top of frontmatter
