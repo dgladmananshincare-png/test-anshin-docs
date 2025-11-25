@@ -1,7 +1,7 @@
 ---
+sidebar_position: 7
 id: test1
 title: test1
-sidebar_position: 5
 ---
 Boy i hope this works now.
 
