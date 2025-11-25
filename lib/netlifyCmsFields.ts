@@ -16,7 +16,7 @@ export const baseFields: NetlifyCmsField[] = [
   { name: 'id', label: 'Id', widget: 'string' },
   { name: 'title', label: 'Title', widget: 'string' },
   { name: 'subtitle', label: 'Subtitle', widget: 'string', required: false },
-  { name: 'sidebar_position', label: 'Sidebar Position', widget: 'number', required: false, min: 1},
+  // { name: 'sidebar_position', label: 'Sidebar Position', widget: 'number', required: false, min: 1},
   {
     name: 'metadata',
     label: 'Metadata',
