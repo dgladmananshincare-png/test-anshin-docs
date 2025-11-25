@@ -44,7 +44,7 @@ const config: Config = {
   ],
   plugins: [
     // Generates Netlify CMS config (admin/config.yml) at build-time based on docs/app folder structure.
-    ...(process.env.DOCUSAURUS_ENV === 'stg' ? [netlifyCmsConfigPlugin] : []),
+    netlifyCmsConfigPlugin,
     [
       '@docusaurus/plugin-content-docs',
       {
