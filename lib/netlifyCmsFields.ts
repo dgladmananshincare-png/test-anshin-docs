@@ -7,6 +7,7 @@ export interface NetlifyCmsField {
   label: string;
   widget: string;
   required?: boolean;
+  min?: number;
   fields?: NetlifyCmsField[]; // for object widget
 }
 
@@ -15,15 +16,15 @@ export const baseFields: NetlifyCmsField[] = [
   { name: 'id', label: 'Id', widget: 'string' },
   { name: 'title', label: 'Title', widget: 'string' },
   { name: 'subtitle', label: 'Subtitle', widget: 'string', required: false },
-  { name: 'sidebar_position', label: 'Sidebar Position', widget: 'number' },
+  { name: 'sidebar_position', label: 'Sidebar Position', widget: 'number', required: false, min: 1},
   {
     name: 'metadata',
     label: 'Metadata',
     widget: 'object',
     fields: [
-      { name: 'pageId', label: 'Page ID', widget: 'string' },
-      { name: 'categoryId', label: 'Category ID', widget: 'string' },
-      { name: 'guideId', label: 'Guide ID', widget: 'string' },
+      { name: 'pageId', label: 'Page ID', widget: 'string', required: false },
+      { name: 'categoryId', label: 'Category ID', widget: 'string', required: false },
+      { name: 'guideId', label: 'Guide ID', widget: 'string', required: false },
     ],
   },
   { name: 'body', label: 'Body', widget: 'markdown' },
