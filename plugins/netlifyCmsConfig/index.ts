@@ -65,7 +65,7 @@ function buildNetlifyCmsConfig(siteDir: string) {
       name: 'github',
       branch: 'stg',
       repo: 'dgladmananshincare-png/test-anshin-docs',
-      base_url: 'https://test-anshin-docs.vercel.app/',
+      base_url: 'https://stg-test-anshin-docs.vercel.app/',
       auth_endpoint: '/auth',
     },
     publish_mode: 'editorial_workflow',
