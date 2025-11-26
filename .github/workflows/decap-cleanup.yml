@@ -1,0 +1,30 @@
+name: Cleanup Decap CMS/Admin Files
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+
+      - name: Remove Decap CMS/admin files and folders
+        run: |
+          rm -rf api/auth.ts api/callback.ts
+          rm -rf api
+          rm -rf lib/config.ts lib/scopes.ts
+          rm -rf static/admin
+          rm -f vercel.json
+
+      - name: Commit and push cleanup
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add -A
+          git commit -m "Cleanup Decap CMS/admin files from production" || echo "No changes to commit"
+          git push
