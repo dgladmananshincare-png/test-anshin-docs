@@ -47,7 +47,7 @@ function buildCollections(appDocsDir: string): CollectionConfig[] {
       name,
       label,
       folder,
-      identifier_field: 'title',
+      identifier_field: 'id',
       extension: 'md',
       create: true,
       delete: false,
