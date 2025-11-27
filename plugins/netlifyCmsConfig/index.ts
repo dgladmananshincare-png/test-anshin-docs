@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import yaml from 'yaml';
-import { baseFields } from '../../lib/netlifyCmsFields';
+import { baseFields } from './netlifyCmsFields';
 
 interface CollectionConfig {
   name: string;
@@ -9,6 +9,7 @@ interface CollectionConfig {
   folder: string;
   identifier_field: string;
   extension: string;
+  summary: string;
   create: boolean;
   slug: string;
   fields: any[]; // Netlify CMS allows nested structures; keep wide here.
@@ -47,11 +48,13 @@ function buildCollections(appDocsDir: string): CollectionConfig[] {
       name,
       label,
       folder,
-      identifier_field: 'title',
+      identifier_field: 'id',
       extension: 'md',
       create: true,
+      delete: false,
       slug: '{{id}}',
-      fields: baseFields,
+      summary: `${label}/{{filename}}.{{extension}} : {{title}}`,
+      fields: baseFields
     };
   });
 }
@@ -71,6 +74,10 @@ function buildNetlifyCmsConfig(siteDir: string) {
     publish_mode: 'editorial_workflow',
     media_folder: 'static/img',
     public_folder: '/img/',
+    logo: {
+      src: "https://stg-test-anshin-docs.vercel.app/img/logo.webp",
+      show_in_header: true
+    },
     locale: 'ja',
     search: false,
     slug: {
