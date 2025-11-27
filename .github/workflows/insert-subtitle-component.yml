@@ -45,5 +45,10 @@ jobs:
           git config user.email "github-actions@github.com"
           FILES=$(echo "${{ steps.changed_files.outputs.changed }}" | tr '\n' ' ')
           git add $FILES || true
-          git commit -m "Insert Subtitle component for docs with subtitle" || echo "No changes"
-          git push
+          if ! git diff --cached --quiet; then
+            git commit -m "Insert Subtitle component for docs with subtitle"
+            git pull --rebase
+            git push
+          else
+            echo "No changes to commit or push."
+          fi
