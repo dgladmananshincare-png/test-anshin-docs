@@ -9,6 +9,8 @@ interface CollectionConfig {
   folder: string;
   identifier_field: string;
   extension: string;
+  summary: string;
+  sortable_fields: string[];
   create: boolean;
   slug: string;
   fields: any[]; // Netlify CMS allows nested structures; keep wide here.
@@ -52,7 +54,9 @@ function buildCollections(appDocsDir: string): CollectionConfig[] {
       create: true,
       delete: false,
       slug: '{{id}}',
+      summary: '{{dirname}}/{{filename}}.{{extension}} : {{title}}',
       fields: baseFields,
+      sortable_fields: ['sidebar_position']
     };
   });
 }
