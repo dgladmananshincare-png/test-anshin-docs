@@ -17,16 +17,16 @@ export const baseFields: NetlifyCmsField[] = [
   { name: 'title', label: 'Title', widget: 'string' },
   { name: 'subtitle', label: 'Subtitle', widget: 'string', required: false },
   // { name: 'sidebar_position', label: 'Sidebar Position', widget: 'number', required: false, min: 1},
-  {
-    name: 'metadata',
-    label: 'Metadata',
-    widget: 'object',
-    fields: [
-      { name: 'pageId', label: 'Page ID', widget: 'string', required: false },
-      { name: 'categoryId', label: 'Category ID', widget: 'string', required: false },
-      { name: 'guideId', label: 'Guide ID', widget: 'string', required: false },
-    ],
-  },
+  // {
+  //   name: 'metadata',
+  //   label: 'Metadata',
+  //   widget: 'object',
+  //   fields: [
+  //     { name: 'pageId', label: 'Page ID', widget: 'string', required: false },
+  //     { name: 'categoryId', label: 'Category ID', widget: 'string', required: false },
+  //     { name: 'guideId', label: 'Guide ID', widget: 'string', required: false },
+  //   ],
+  // },
   { name: 'body', label: 'Body', widget: 'markdown' },
 ];
 
