@@ -1,0 +1,49 @@
+name: Insert Subtitle Component
+
+on:
+  pull_request:
+    branches: [stg]
+    types: [opened, synchronize]
+
+jobs:
+  inject_subtitle:
+    if: startsWith(github.head_ref, 'cms/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - name: Checkout PR head branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Determine changed markdown files (A or M)
+        id: changed_files
+        run: |
+          git fetch origin ${{ github.event.pull_request.base.ref }}
+          CHANGED=$(git diff --name-status origin/${{ github.event.pull_request.base.ref }}...HEAD | awk '/^[AM]/ && $2 ~ /\.md$/ {print $2}')
+          echo "changed<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Insert Subtitle component
+        if: ${{ steps.changed_files.outputs.changed != '' }}
+        run: |
+          node scripts/insert-subtitle-component.js "${{ steps.changed_files.outputs.changed }}"
+
+      - name: Commit changes
+        if: ${{ steps.changed_files.outputs.changed != '' }}
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          FILES=$(echo "${{ steps.changed_files.outputs.changed }}" | tr '\n' ' ')
+          git add $FILES || true
+          git commit -m "Insert Subtitle component for docs with subtitle" || echo "No changes"
+          git push
