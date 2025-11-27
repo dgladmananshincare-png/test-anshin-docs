@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import yaml from 'yaml';
-import { baseFields } from '../../lib/netlifyCmsFields';
+import { baseFields } from './netlifyCmsFields';
 
 interface CollectionConfig {
   name: string;
