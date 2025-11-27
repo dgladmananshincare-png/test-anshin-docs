@@ -54,7 +54,7 @@ function buildCollections(appDocsDir: string): CollectionConfig[] {
       create: true,
       delete: false,
       slug: '{{id}}',
-      summary: '{{dirname}}/{{filename}}.{{extension}} : {{title}}',
+      summary: `${label}/{{filename}}.{{extension}} : {{title}}`,
       fields: baseFields,
       sortable_fields: ['sidebar_position']
     };
