@@ -71,6 +71,10 @@ function buildNetlifyCmsConfig(siteDir: string) {
     publish_mode: 'editorial_workflow',
     media_folder: 'static/img',
     public_folder: '/img/',
+    logo: {
+      src: "https://stg-test-anshin-docs.vercel.app/img/logo.webp",
+      show_in_header: true
+    },
     locale: 'ja',
     search: false,
     slug: {
