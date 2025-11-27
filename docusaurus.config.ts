@@ -1,4 +1,5 @@
 import {themes as prismThemes} from 'prism-react-renderer';
+import generateAdminIndex from './plugins/generateAdminIndex';
 import netlifyCmsConfigPlugin from './plugins/netlifyCmsConfig';
 import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
@@ -43,7 +44,7 @@ const config: Config = {
     ],
   ],
   plugins: [
-    // Generates Netlify CMS config (admin/config.yml) at build-time based on docs/app folder structure.
+    generateAdminIndex,
     ...(process.env.DOCUSAURUS_ENV === 'stg' ? [netlifyCmsConfigPlugin] : []),
     [
       '@docusaurus/plugin-content-docs',
