@@ -1,0 +1,50 @@
+name: Sanitize Doc Fields
+
+on:
+  pull_request:
+    branches: [stg]
+    types: [opened, synchronize]
+
+jobs:
+  sanitize:
+    # Only run for Decap CMS branches like cms/.../...
+    if: startsWith(github.head_ref, 'cms/')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - name: Checkout PR head branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Determine changed markdown files (A or M)
+        id: changed_open
+        run: |
+          git fetch origin ${{ github.event.pull_request.base.ref }}
+          CHANGED=$(git diff --name-status origin/${{ github.event.pull_request.base.ref }}...HEAD | awk '/^[AM]/ && $2 ~ /\.md$/ {print $2}')
+          echo "changed_files<<EOF" >> $GITHUB_OUTPUT
+          echo "$CHANGED" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Run sanitize script
+        if: ${{ steps.changed_open.outputs.changed_files != '' }}
+        run: |
+          node scripts/sanitize-doc-fields.js "${{ steps.changed_open.outputs.changed_files }}"
+
+      - name: Commit changes
+        if: ${{ steps.changed_open.outputs.changed_files != '' }}
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          FILES=$(echo "${{ steps.changed_open.outputs.changed_files }}" | tr '\n' ' ')
+          git add $FILES || true
+          git commit -m "Sanitize title, subtitle, and body for docs" || echo "No changes"
+          git push
