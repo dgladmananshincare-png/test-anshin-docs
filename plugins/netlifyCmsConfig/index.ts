@@ -50,6 +50,7 @@ function buildCollections(appDocsDir: string): CollectionConfig[] {
       identifier_field: 'title',
       extension: 'md',
       create: true,
+      delete: false,
       slug: '{{id}}',
       fields: baseFields,
     };
