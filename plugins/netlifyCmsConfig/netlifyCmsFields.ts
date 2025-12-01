@@ -10,6 +10,7 @@ export interface NetlifyCmsField {
   min?: number;
   pattern?: string[];
   hint?: string;
+  default?: any;
   fields?: NetlifyCmsField[]; // for object widget
 }
 
@@ -35,17 +36,17 @@ export const baseFields: NetlifyCmsField[] = [
     required: false,
     pattern: ['^.{0,140}$', 'サブタイトルは140文字以内で入力してください。']
   },
-  // { name: 'sidebar_position', label: 'Sidebar Position', widget: 'number', required: false, min: 1},
-  // {
-  //   name: 'metadata',
-  //   label: 'Metadata',
-  //   widget: 'object',
-  //   fields: [
-  //     { name: 'pageId', label: 'Page ID', widget: 'string', required: false },
-  //     { name: 'categoryId', label: 'Category ID', widget: 'string', required: false },
-  //     { name: 'guideId', label: 'Guide ID', widget: 'string', required: false },
-  //   ],
-  // },
+  { name: 'sidebar_position', label: 'Sidebar Position', widget: 'hidden', default: "null"},
+  {
+    name: 'metadata',
+    label: 'Metadata',
+    widget: 'hidden',
+    fields: [
+      { name: 'pageId', label: 'Page ID', widget: 'hidden', required: false, default: "temp-000"},
+      { name: 'categoryId', label: 'Category ID', widget: 'hidden', required: false, default: "temp-000" },
+      { name: 'guideId', label: 'Guide ID', widget: 'hidden', required: false, default: "temp-000" },
+    ],
+  },
   { name: 'body', label: '本文', widget: 'markdown' },
 ];
 
