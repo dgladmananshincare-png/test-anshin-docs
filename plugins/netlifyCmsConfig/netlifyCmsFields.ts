@@ -36,10 +36,10 @@ export const baseFields: NetlifyCmsField[] = [
     required: false,
     pattern: ['^.{0,140}$', 'サブタイトルは140文字以内で入力してください。']
   },
-  { name: 'sidebar_position', label: 'Sidebar Position', widget: 'hidden', default: ""},
-  { name: "description", label: "description", widget: "hidden", default: ""},
-  { name: "keywords", label: "keywords", widget: "hidden", default: []},
-  { name: "slug", label: "slug", widget: "hidden", default: ""},
+  // { name: 'sidebar_position', label: 'Sidebar Position', widget: 'hidden', default: ""},
+  // { name: "description", label: "description", widget: "hidden", default: ""},
+  // { name: "keywords", label: "keywords", widget: "hidden", default: []},
+  // { name: "slug", label: "slug", widget: "hidden", default: ""},
   { name: 'body', label: '本文', widget: 'markdown' },
 
 ];
