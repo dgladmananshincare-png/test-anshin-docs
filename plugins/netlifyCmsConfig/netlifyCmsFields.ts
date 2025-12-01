@@ -36,18 +36,12 @@ export const baseFields: NetlifyCmsField[] = [
     required: false,
     pattern: ['^.{0,140}$', 'サブタイトルは140文字以内で入力してください。']
   },
-  { name: 'sidebar_position', label: 'Sidebar Position', widget: 'hidden', default: "null"},
-  {
-    name: 'metadata',
-    label: 'Metadata',
-    widget: 'object',
-    fields: [
-      { name: 'pageId', label: 'Page ID', widget: 'hidden', default: "temp-000"},
-      { name: 'categoryId', label: 'Category ID', widget: 'hidden', default: "temp-000" },
-      { name: 'guideId', label: 'Guide ID', widget: 'hidden', default: "temp-000" },
-    ],
-  },
+  { name: 'sidebar_position', label: 'Sidebar Position', widget: 'hidden', default: ""},
+  { name: "description", label: "description", widget: "hidden", default: ""},
+  { name: "keywords", label: "keywords", widget: "hidden", default: []},
+  { name: "slug", label: "slug", widget: "hidden", default: ""},
   { name: 'body', label: '本文', widget: 'markdown' },
+
 ];
 
 // If you need per-collection overrides in future, you can expose a helper:
