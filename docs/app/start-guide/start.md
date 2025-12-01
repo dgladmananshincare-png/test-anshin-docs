@@ -1,14 +1,20 @@
 ---
+id: start
 title: 始める前に
 sidebar_position: 3
-description: "管理画面の説明と、会社・職員・事業所の初期登録手順の概要をまとめた導入ガイドです。"
-keywords: ["導入", "初期設定", "管理画面", "会社登録", "アンシン"]
-last_update: 
-    date: '2024-01-15'
-metadata: 
-    id: 'start-102'
-    categoryId: 'cate-100'
-    guideId: 'guide-100'
+description: 管理画面の説明と、会社・職員・事業所の初期登録手順の概要をまとめた導入ガイドです。
+keywords:
+  - 導入
+  - 初期設定
+  - 管理画面
+  - 会社登録
+  - アンシン
+last_update:
+  date: 2024-01-15
+metadata:
+  id: start-102
+  categoryId: cate-100
+  guideId: guide-100
 ---
 
 #### 目次
