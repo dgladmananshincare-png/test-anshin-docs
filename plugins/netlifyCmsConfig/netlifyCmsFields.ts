@@ -40,11 +40,11 @@ export const baseFields: NetlifyCmsField[] = [
   {
     name: 'metadata',
     label: 'Metadata',
-    widget: 'hidden',
+    widget: 'object',
     fields: [
-      { name: 'pageId', label: 'Page ID', widget: 'hidden', required: false, default: "temp-000"},
-      { name: 'categoryId', label: 'Category ID', widget: 'hidden', required: false, default: "temp-000" },
-      { name: 'guideId', label: 'Guide ID', widget: 'hidden', required: false, default: "temp-000" },
+      { name: 'pageId', label: 'Page ID', widget: 'hidden', default: "temp-000"},
+      { name: 'categoryId', label: 'Category ID', widget: 'hidden', default: "temp-000" },
+      { name: 'guideId', label: 'Guide ID', widget: 'hidden', default: "temp-000" },
     ],
   },
   { name: 'body', label: '本文', widget: 'markdown' },
