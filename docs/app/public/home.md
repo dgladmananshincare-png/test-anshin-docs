@@ -2,7 +2,6 @@
 id: home
 slug: home
 title: ホーム
-sidebar_position: 2
 description: ホーム画面の主要コンテンツ（勤怠、スケジュール、職員、マイページ）の構成と機能の概要を案内します。
 keywords:
   - ホーム
@@ -11,6 +10,7 @@ keywords:
   - マイページ
   - アンシン
 noindex: false
+sidebar_position: 2
 ---
 
 1. [勤怠](#public-101-1)

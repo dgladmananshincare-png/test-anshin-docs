@@ -3,11 +3,11 @@ id: assessment
 slug: assessment
 title: ご要望ヒヤリング（アセスメント）
 subtitle: 「ご利用者」→「アセス」→「ご希望内容確認」
-sidebar_position: 5
 description: Placeholder page
 keywords:
   - placeholder
 noindex: true
+sidebar_position: 5
 ---
 
 import Head from '@docusaurus/Head';

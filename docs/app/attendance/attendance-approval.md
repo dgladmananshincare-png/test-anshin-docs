@@ -2,7 +2,7 @@
 id: attendance-approval
 slug: attendance-approval
 title: 勤怠承認（権限制限）
-sidebar_position: 4
+subtitle: null
 description: 勤怠申請の承認・非承認の流れと、管理者による操作方法を詳しく説明します。
 keywords:
   - 勤怠承認
@@ -11,6 +11,7 @@ keywords:
   - 勤怠管理
   - アンシン
 noindex: false
+sidebar_position: 4
 ---
 
 1. [概要](#attendance-103-1)

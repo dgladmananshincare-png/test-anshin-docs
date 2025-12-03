@@ -3,7 +3,6 @@ id: advance
 slug: advance
 title: 事前準備
 subtitle: 「事業所」→「サービス」→「電子署名書類」
-sidebar_position: 1
 description: 契約書等の電子署名用PDFを事前に登録する手順を解説します。事業所・サービスの選択方法とアップロード手順を含みます。
 keywords:
   - 電子署名
@@ -12,6 +11,7 @@ keywords:
   - PDFアップロード 
   - アンシン
 noindex: false
+sidebar_position: 1
 ---
 
 import Subtitle from '@site/src/components/Subtitle';

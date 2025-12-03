@@ -2,7 +2,6 @@
 id: bonus
 slug: bonus
 title: 賞与計算
-sidebar_position: 6
 description: 賞与計算の手順、保険控除や税金の確認方法、編集手順および年末調整に関する注意点を解説します。
 keywords:
   - 賞与計算
@@ -11,6 +10,7 @@ keywords:
   - 所得税
   - アンシン
 noindex: false
+sidebar_position: 6
 ---
 
 1. [賞与計算](#salary-105-1)

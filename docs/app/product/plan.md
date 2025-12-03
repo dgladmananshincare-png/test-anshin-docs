@@ -3,11 +3,11 @@ id: plan
 slug: plan
 title: サービス提供計画書
 subtitle: 「ご利用者」→「計画書」→「サービス選定と目標・週間-月間スケジュール・利用票作成」
-sidebar_position: 6
 description: Placeholder page
 keywords:
   - placeholder
 noindex: true
+sidebar_position: 6
 ---
 
 import Head from '@docusaurus/Head';

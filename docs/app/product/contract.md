@@ -3,11 +3,11 @@ id: contract
 slug: contract
 title: 契約管理（電子サイン契約等）
 subtitle: 「ご利用者」→「契約情報」→「利用サービス・契約書・プラポリ同意書」
-sidebar_position: 4
 description: Placeholder page
 keywords:
   - placeholder
 noindex: true
+sidebar_position: 4
 ---
 
 import Head from '@docusaurus/Head';

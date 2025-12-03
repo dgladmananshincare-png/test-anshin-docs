@@ -2,7 +2,6 @@
 id: calculation
 slug: calculation
 title: 給与計算
-sidebar_position: 4
 description: 勤怠登録から給与計算、保険・税金の調整までの一連の流れと、自動計算／手動編集の使い分けを解説します。
 keywords:
   - 給与計算
@@ -11,6 +10,7 @@ keywords:
   - 税金
   - アンシン
 noindex: false
+sidebar_position: 4
 ---
 
 1. [概要](#salary-103-1)

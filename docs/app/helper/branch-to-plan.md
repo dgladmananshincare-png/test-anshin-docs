@@ -3,11 +3,11 @@ id: branch-to-plan
 slug: branch-to-plan
 title: 提供票連携
 subtitle: 「ご利用者」→「サービス事業所連携」→「提供票連携」
-sidebar_position: 2
 description: Placeholder page
 keywords:
   - placeholder
 noindex: true
+sidebar_position: 2
 ---
 
 import Head from '@docusaurus/Head';

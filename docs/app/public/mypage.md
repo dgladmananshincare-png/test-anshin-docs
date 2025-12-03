@@ -2,7 +2,6 @@
 id: mypage
 slug: mypage
 title: マイページ
-sidebar_position: 3
 description: マイページで確認できる基本情報、給与、勤務表、雇用情報の見方と操作方法を説明します。
 keywords:
   - マイページ
@@ -11,6 +10,7 @@ keywords:
   - 雇用情報
   - アンシン
 noindex: false
+sidebar_position: 3
 ---
 
 1. [基本情報](#public-102-1)

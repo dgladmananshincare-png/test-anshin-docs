@@ -2,7 +2,6 @@
 id: employee
 slug: employee
 title: ２、職員設定（権限制限）
-sidebar_position: 5
 description: 職員の一括登録、雇用・部署設定、権限付与、アカウント管理とパスワード変更手順を説明します。
 keywords:
   - 職員登録
@@ -11,6 +10,7 @@ keywords:
   - アカウント管理
   - アンシン
 noindex: false
+sidebar_position: 5
 ---
 
 1. [職員登録[権限:職員-職員管理]](#start-104-1)

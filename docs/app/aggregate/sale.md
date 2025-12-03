@@ -3,11 +3,11 @@ id: sale
 slug: sale
 title: 売上推移
 subtitle: 「集計・分析」→「集計」→「「売上推移」→「売上合計・サービス別売上」
-sidebar_position: 3
 description: Placeholder page
 keywords:
   - placeholder
 noindex: true
+sidebar_position: 3
 ---
 
 import Head from '@docusaurus/Head';

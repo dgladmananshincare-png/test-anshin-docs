@@ -3,11 +3,11 @@ id: closing
 slug: closing
 title: 月締処理
 subtitle: 「請求管理」→「月締処理」
-sidebar_position: 1
 description: Placeholder page
 keywords:
   - placeholder
 noindex: true
+sidebar_position: 1
 ---
 
 import Head from '@docusaurus/Head';

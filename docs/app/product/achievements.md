@@ -3,11 +3,11 @@ id: achievements
 slug: achievements
 title: 実績登録
 subtitle: 「ご利用者」→「予定・実績」→「実績登録」
-sidebar_position: 7
 description: Placeholder page
 keywords:
   - placeholder
 noindex: true
+sidebar_position: 7
 ---
 
 import Head from '@docusaurus/Head';

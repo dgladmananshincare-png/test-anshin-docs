@@ -2,7 +2,6 @@
 id: about
 slug: about
 title: ガイドについて
-sidebar_position: 1
 description: アンシンを正しく利用・活用するための総合ガイドです。画面イメージや運用上の注意点を含めて解説しています。
 keywords:
   - ガイド 
@@ -10,6 +9,7 @@ keywords:
   - アンシン 
   - ドキュメント
 noindex: false
+sidebar_position: 1
 ---
 
 ## ガイドについて          

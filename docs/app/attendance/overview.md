@@ -2,7 +2,6 @@
 id: overview
 slug: overview
 title: 概要
-sidebar_position: 2
 description: アンシンの勤怠管理機能の全体像と各画面の役割をまとめています。
 keywords:
   - 勤怠管理
@@ -10,6 +9,7 @@ keywords:
   - 画面説明
   - アンシン
 noindex: false
+sidebar_position: 2
 ---
 
 1. [概要](#attendance-101-1)

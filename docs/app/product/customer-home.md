@@ -3,11 +3,11 @@ id: customer-home
 slug: customer-home
 title: ご利用者（ご家族）ホーム
 subtitle: 「ホーム」→「スケジュール・サービス提供内容」
-sidebar_position: 9
 description: Placeholder page
 keywords:
   - placeholder
 noindex: true
+sidebar_position: 9
 ---
 
 import Head from '@docusaurus/Head';

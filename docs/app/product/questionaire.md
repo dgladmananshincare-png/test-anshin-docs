@@ -3,11 +3,11 @@ id: questionaire
 slug: questionaire
 title: 利用者アンケート
 subtitle: 「事業所」→「事業所サービス」→「利用者アンケートフォーマット登録」
-sidebar_position: 2
 description: Placeholder page
 keywords:
   - placeholder
 noindex: true
+sidebar_position: 2
 ---
 
 import Head from '@docusaurus/Head';
