@@ -80,11 +80,15 @@ const SANITIZE_OPTIONS = {
     'img',
     // Headings (if present as raw HTML)
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+    // Whitelist specific JSX-like tags we use in MDX
+    'Subtitle', 'Head', 'meta'
   ],
   allowedAttributes: {
     a: ['href', 'name', 'target', 'rel', 'title'],
     img: ['src', 'alt', 'title', 'width', 'height'],
     '*': ['title'],
+    // Allow attributes used in meta for robots
+    meta: ['name', 'content'],
   },
   // Disallow javascript: and other dangerous schemes
   allowedSchemes: ['http', 'https', 'mailto', 'tel', 'data'],
@@ -158,6 +162,23 @@ function sanitizeFrontmatter(fm) {
 }
 
 function sanitizeMarkdownBody(body) {
+  // Preserve specific JSX-like blocks by tokenizing them before HTML sanitization, then restoring.
+  const placeholders = [];
+  const pushPlaceholder = (original, type) => {
+    const token = `__PLACEHOLDER_${type}_${placeholders.length}__`;
+    placeholders.push({ token, original });
+    return token;
+  };
+
+  // Match exact Subtitle line
+  const SUBTITLE_RE = /<Subtitle\s+text=\{frontMatter\.subtitle\}\s*\/>/g;
+  // Match Head block with robots meta; be flexible with spacing/newlines
+  const HEAD_BLOCK_RE = /<Head>\s*<meta\s+name=["']robots["']\s+content=["']noindex,\s*nofollow["']\s*\/>\s*<\/Head>/gs;
+
+  let working = body
+    .replace(SUBTITLE_RE, (m) => pushPlaceholder(m, 'SUBTITLE'))
+    .replace(HEAD_BLOCK_RE, (m) => pushPlaceholder(m, 'HEAD'));
+
   // Neutralize dangerous markdown link/image URLs (e.g., javascript: in [link](...) or ![img](...))
   const neutralizeUrl = (url) => {
     const original = url || '';
@@ -168,7 +189,7 @@ function sanitizeMarkdownBody(body) {
     return isAllowed ? original : '#';
   };
 
-  const preprocessed = body
+  const preprocessed = working
     // Images: ![alt](url)
     .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (m, alt, url) => `![${alt}](${neutralizeUrl(url)})`)
     // Links: [text](url)
@@ -176,7 +197,15 @@ function sanitizeMarkdownBody(body) {
 
   // Apply sanitize-html to the whole body. This preserves markdown syntax
   // and removes/cleans only raw HTML fragments.
-  return sanitizeHtml(preprocessed, SANITIZE_OPTIONS);
+  let cleaned = sanitizeHtml(preprocessed, SANITIZE_OPTIONS);
+
+  // Restore placeholders back to original JSX-like blocks
+  for (const { token, original } of placeholders) {
+    const tokenRe = new RegExp(token.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g');
+    cleaned = cleaned.replace(tokenRe, original);
+  }
+
+  return cleaned;
 }
 
 function processFile(filePath) {
