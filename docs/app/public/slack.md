@@ -1,15 +1,10 @@
 ---
+id: slack
 title: Slack連携（権限制限）
 subtitle: 「会社」→「設定」→「Slack連携」
 sidebar_position: 4
 description: "Slackとの連携設定手順を説明します。打刻や勤怠通知をSlackに送信するための設定方法を案内します（会社管理者向け）。"
 keywords: ["Slack連携", "通知", "設定", "勤怠通知", "アンシン"]
-last_update: 
-    date: '2024-01-17'
-metadata: 
-    pageId: 'public-103'
-    categoryId: 'cate-101'
-    guideId: 'guide-101'
 ---
 import Subtitle from '@site/src/components/Subtitle';
 

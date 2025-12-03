@@ -1,14 +1,9 @@
 ---
+id: attendance-request
 title: 勤怠申請
 sidebar_position: 3
 description: "出勤・退勤・残業・有給など各種勤怠申請の方法と承認フローを解説します。"
 keywords: ["勤怠申請", "出勤", "退勤", "残業申請", "有給申請", "アンシン"]
-last_update: 
-    date: '2024-01-18'
-metadata: 
-    pageId: 'attendance-102'
-    categoryId: 'cate-104'
-    guideId: 'guide-104'
 ---
 
 1. [概要](#attendance-102-1)

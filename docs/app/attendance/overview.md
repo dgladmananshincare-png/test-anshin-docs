@@ -1,14 +1,9 @@
 ---
+id: overview
 title: 概要
 sidebar_position: 2
 description: "アンシンの勤怠管理機能の全体像と各画面の役割をまとめています。"
 keywords: ["勤怠管理", "概要", "画面説明", "アンシン"]
-last_update: 
-    date: '2024-01-19'
-metadata: 
-    pageId: 'attendance-101'
-    categoryId: 'cate-104'
-    guideId: 'guide-104'
 ---
 
 1. [概要](#attendance-101-1)

@@ -1,14 +1,9 @@
 ---
+id: attendance-summary
 title: 月間稼働情報（権限制限）
 sidebar_position: 7
 description: "月間稼働合計の修正方法や給与計算との連携について説明します。"
 keywords: ["月間稼働", "勤怠管理", "勤務表", "給与計算", "アンシン"]
-last_update: 
-    date: '2024-01-15'
-metadata:
-    pageId: 'attendance-105'
-    categoryId: 'cate-104'
-    guideId: 'guide-104'
 ---
 
 1. [月間稼働合計修正（権限: 事業所職員-職員管理）](#attendance-105-1)

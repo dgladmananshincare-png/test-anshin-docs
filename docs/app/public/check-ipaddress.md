@@ -1,15 +1,11 @@
 ---
+id: check-ipaddress
 title: 通信制限（権限制限）
 subtitle: 「会社」→「設定」→「通信制御」
 sidebar_position: 5
 description: "アクセス元IPアドレスの制限と登録手順を解説します。通信制御の設定方法と運用上の注意点を示します。"
 keywords: ["通信制限", "IPアドレス", "セキュリティ", "通信制御", "アンシン"]
-last_update: 
-    date: '2024-01-17'
-metadata: 
-    pageId: 'public-104'
-    categoryId: 'cate-101'
-    guideId: 'guide-101'
+
 ---
 import Subtitle from '@site/src/components/Subtitle';
 

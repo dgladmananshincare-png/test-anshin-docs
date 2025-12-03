@@ -1,14 +1,9 @@
 ---
+id: mypage
 title: マイページ
 sidebar_position: 3
 description: "マイページで確認できる基本情報、給与、勤務表、雇用情報の見方と操作方法を説明します。"
 keywords: ["マイページ", "給与", "勤務表", "雇用情報", "アンシン"]
-last_update: 
-    date: '2024-01-16'
-metadata: 
-    pageId: 'public-102'
-    categoryId: 'cate-101'
-    guideId: 'guide-101'
 ---
 
 1. [基本情報](#public-102-1)

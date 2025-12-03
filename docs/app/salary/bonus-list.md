@@ -1,14 +1,9 @@
 ---
+id: bonus-list
 title: 賞与明細
 sidebar_position: 7
 description: "賞与明細の確認方法と表示箇所（給与計算画面およびマイページ）について説明します。"
 keywords: ["賞与明細", "賞与", "明細", "給与", "アンシン"]
-last_update: 
-    date: '2024-01-20'
-metadata: 
-    pageId: 'salary-106'
-    categoryId: 'cate-108'
-    guideId: 'guide-108'
 ---
 
 ## 賞与明細 {#salary-106-1}

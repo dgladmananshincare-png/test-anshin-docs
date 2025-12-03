@@ -1,15 +1,10 @@
 ---
+id: electronic-signature
 title: 電子署名
 subtitle: 「ご利用者」→「基本情報」→「契約情報」
 sidebar_position: 2
 description: "電子署名を実施するための準備と手順を解説します。サービス割当や代理人設定、署名実施のステップまで網羅しています。"
 keywords: ["電子署名", "署名手順", "代理人", "契約情報", "アンシン"]
-last_update: 
-    date: '2024-04-22'
-metadata: 
-    pageId: 'contract-102'
-    categoryId: 'cate-111'
-    guideId: 'guide-111'
 ---
 
 import Subtitle from '@site/src/components/Subtitle';

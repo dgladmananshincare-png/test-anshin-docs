@@ -1,14 +1,9 @@
 ---
+id: home
 title: ホーム
 sidebar_position: 2
 description: "ホーム画面の主要コンテンツ（勤怠、スケジュール、職員、マイページ）の構成と機能の概要を案内します。"
 keywords: ["ホーム", "勤怠", "スケジュール", "マイページ", "アンシン"]
-last_update: 
-    date: '2024-01-15'
-metadata: 
-    pageId: 'public-101'
-    categoryId: 'cate-101'
-    guideId: 'guide-101'
 ---
 
 1. [勤怠](#public-101-1)
