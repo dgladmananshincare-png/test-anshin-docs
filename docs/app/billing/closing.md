@@ -4,7 +4,7 @@ slug: closing
 title: 月締処理
 subtitle: 「請求管理」→「月締処理」
 sidebar_position: 1
-description: "Placeholder page"
+description: Placeholder page
 keywords:
   - placeholder
 noindex: true

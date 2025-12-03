@@ -4,7 +4,7 @@ slug: monitoring
 title: モニタリング評価
 subtitle: 「ご利用者」→「モニタリング」→「実績確認・ご利用者満足度確認・評価」
 sidebar_position: 8
-description: "Placeholder page"
+description: Placeholder page
 keywords:
   - placeholder
 noindex: true

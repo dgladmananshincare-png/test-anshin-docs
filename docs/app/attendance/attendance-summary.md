@@ -3,8 +3,8 @@ id: attendance-summary
 slug: attendance-summary
 title: 月間稼働情報（権限制限）
 sidebar_position: 7
-description: "月間稼働合計の修正方法や給与計算との連携について説明します。"
-keywords: 
+description: 月間稼働合計の修正方法や給与計算との連携について説明します。
+keywords:
   - 月間稼働 
   - 勤怠管理
   - 勤務表

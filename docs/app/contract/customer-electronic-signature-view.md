@@ -4,8 +4,8 @@ slug: customer-electronic-signature-view
 title: ご利用者による電子署名書類の確認方法
 subtitle: 「ご利用者マイページ」→「ログイン」→「契約情報」
 sidebar_position: 3
-description: "ご利用者がマイページから署名済みの電子書類を確認・ダウンロードする手順を説明します。アカウント確認とログイン手順を含むガイドです。"
-keywords: 
+description: ご利用者がマイページから署名済みの電子書類を確認・ダウンロードする手順を説明します。アカウント確認とログイン手順を含むガイドです。
+keywords:
  - 電子署名確認
  - ご利用者マイページ
  - PDFダウンロード

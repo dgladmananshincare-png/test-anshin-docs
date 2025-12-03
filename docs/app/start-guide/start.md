@@ -3,8 +3,8 @@ id: start
 slug: start
 title: 始める前に
 sidebar_position: 3
-description: "管理画面の説明と、会社・職員・事業所の初期登録手順の概要をまとめた導入ガイドです。"
-keywords: 
+description: 管理画面の説明と、会社・職員・事業所の初期登録手順の概要をまとめた導入ガイドです。
+keywords:
   - 導入
   - 初期設定
   - 管理画面

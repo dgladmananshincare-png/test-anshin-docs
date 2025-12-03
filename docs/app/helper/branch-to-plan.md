@@ -4,7 +4,7 @@ slug: branch-to-plan
 title: 提供票連携
 subtitle: 「ご利用者」→「サービス事業所連携」→「提供票連携」
 sidebar_position: 2
-description: "Placeholder page"
+description: Placeholder page
 keywords:
   - placeholder
 noindex: true

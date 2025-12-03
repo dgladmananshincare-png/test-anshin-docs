@@ -4,7 +4,7 @@ slug: invoice
 title: 請求書
 subtitle: 「請求管理」→「領収書作成・発行」
 sidebar_position: 2
-description: "Placeholder page"
+description: Placeholder page
 keywords:
   - placeholder
 noindex: true
