@@ -1,21 +1,22 @@
 ---
+id: environment
+slug: environment
+title: ご利用環境
+subtitle: 「アンシン」のご利用推奨環境
+description: アンシンの推奨動作環境（ブラウザやバージョン）を案内します。最新のChrome利用を推奨しています。
 keywords:
   - 動作環境
   - ブラウザ
   - Chrome
   - 推奨環境
   - アンシン
-slug: environment
-sidebar_position: 2
 noindex: false
-id: environment
-title: ご利用環境
-subtitle: 「アンシン」のご利用推奨環境
-description: アンシンの推奨動作環境（ブラウザやバージョン）を案内します。最新のChrome利用を推奨しています。
+sidebar_position: 2
 ---
+
 import Subtitle from '@site/src/components/Subtitle';
 
-<Subtitle text={frontMatter.subtitle} />
+
 
 ## 最新バージョンのChromeブラウザをご利用ください。
 
