@@ -1,8 +1,8 @@
 ---
 id: status
+slug: /
 title: このセクションは準備中です
 sidebar_position: 1
-slug: /
 ---
 
 ## すみません。

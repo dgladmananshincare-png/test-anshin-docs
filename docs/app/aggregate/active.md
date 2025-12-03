@@ -4,9 +4,18 @@ slug: active
 title: 稼働推移
 subtitle: 「集計・分析」→「集計」→「「稼働推移」→「労働時間・サービス別稼働時間」
 sidebar_position: 4
+description: "Placeholder page"
+keywords:
+  - placeholder
+noindex: true
 ---
 
+import Head from '@docusaurus/Head';
 import Subtitle from '@site/src/components/Subtitle';
+
+<Head>
+  <meta name="robots" content="noindex, nofollow" />
+</Head>
 
 <Subtitle text={frontMatter.subtitle} />
 

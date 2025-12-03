@@ -1,9 +1,16 @@
 ---
 id: attendance-record
+slug: attendance-record
 title: 出勤簿管理（権限制限）
 sidebar_position: 6
 description: "出勤簿の管理方法や月間勤務表の修正手順、必要な権限について解説します。"
-keywords: ["出勤簿", "勤務表", "勤怠管理", "職員管理", "アンシン"]
+keywords: 
+  - 出勤簿
+  - 勤務表 
+  - 勤怠管理 
+  - 職員管理 
+  - アンシン
+noindex: false
 ---
 
 1. [概要](#attendance-104-1)

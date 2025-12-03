@@ -1,9 +1,11 @@
 ---
 id: faq
-sidebar_position: 10
+slug: faq
 title: よくある質問
+sidebar_position: 10
 description: "よくある質問（FAQ）ページ。料金、ログイン、セキュリティ、機能の概要など、頻繁に寄せられる質問と回答を掲載しています。"
 keywords: ["FAQ", "よくある質問", "料金", "ログイン", "アンシン"]
+noindex: false
 hide_table_of_contents: true
 ---
 

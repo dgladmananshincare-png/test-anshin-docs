@@ -1,9 +1,17 @@
 ---
 id: attendance-request
+slug: attendance-request
 title: 勤怠申請
 sidebar_position: 3
 description: "出勤・退勤・残業・有給など各種勤怠申請の方法と承認フローを解説します。"
-keywords: ["勤怠申請", "出勤", "退勤", "残業申請", "有給申請", "アンシン"]
+keywords: 
+  - 勤怠申請
+  - 出勤
+  - 退勤
+  - 残業申請
+  - 有給申請
+  - アンシン
+noindex: false
 ---
 
 1. [概要](#attendance-102-1)

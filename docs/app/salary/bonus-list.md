@@ -1,9 +1,16 @@
 ---
 id: bonus-list
+slug: bonus-list
 title: 賞与明細
 sidebar_position: 7
 description: "賞与明細の確認方法と表示箇所（給与計算画面およびマイページ）について説明します。"
-keywords: ["賞与明細", "賞与", "明細", "給与", "アンシン"]
+keywords: 
+ - 賞与明細
+ - 賞与
+ - 明細
+ - 給与
+ - アンシン
+noindex: false
 ---
 
 ## 賞与明細 {#salary-106-1}

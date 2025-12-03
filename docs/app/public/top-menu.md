@@ -1,9 +1,16 @@
 ---
 id: top-menu
+slug: top-menu
 title: トップメニュー
 sidebar_position: 1
 description: "トップメニューの各機能（ショートカット、ダークモード、通知、アカウントなど）の使い方をまとめています。"
-keywords: ["トップメニュー", "ショートカット", "ダークモード", "通知", "アンシン"]
+keywords: 
+  - トップメニュー
+  - ショートカット
+  - ダークモード
+  - 通知
+  - アンシン
+noindex: false
 ---
 
 1. [概要](#public-100-1)

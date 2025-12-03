@@ -1,9 +1,16 @@
 ---
 id: salary-list
+slug: salary-list
 title: 給与明細
 sidebar_position: 5
 description: "給与明細の確認方法と表示箇所（給与計算画面やマイページ）を案内します。"
-keywords: ["給与明細", "給与", "明細", "マイページ", "アンシン"]
+keywords: 
+  - 給与明細
+  - 給与
+  - 明細
+  - マイページ
+  - アンシン
+noindex: false
 ---
 
 ## 給与明細
