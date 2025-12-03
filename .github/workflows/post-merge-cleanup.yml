@@ -55,17 +55,17 @@ jobs:
           echo "FILES=$FILES" >> $GITHUB_ENV
           echo "Collected added files:"; echo "$FILES"
 
-      - name: Step 1: Assign sidebar positions
+      - name: Step 1 - Assign sidebar positions
         if: ${{ env.FILES != '' && github.event.pull_request.merged == true }}
         run: |
           node scripts/assign-sidebar-position.js "$FILES"
 
-      - name: Step 2: Add imports based on frontmatter
+      - name: Step 2 - Add imports based on frontmatter
         if: ${{ env.FILES != '' && github.event.pull_request.merged == true }}
         run: |
           node scripts/add-imports.js $FILES
 
-      - name: Step 3: Add components based on frontmatter
+      - name: Step 3 - Add components based on frontmatter
         if: ${{ env.FILES != '' && github.event.pull_request.merged == true }}
         run: |
           node scripts/add-components.js $FILES
