@@ -2,6 +2,7 @@
 id: company
 slug: company
 title: １、会社設定（権限制限）
+subtitle: null
 description: 会社設定の初期手順（利用機能の無効化、基本情報、雇用条件、給与設定）と運用上の注意点を解説します。
 keywords:
   - 会社設定

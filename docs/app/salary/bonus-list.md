@@ -2,6 +2,7 @@
 id: bonus-list
 slug: bonus-list
 title: 賞与明細
+subtitle: null
 description: 賞与明細の確認方法と表示箇所（給与計算画面およびマイページ）について説明します。
 keywords:
  - 賞与明細

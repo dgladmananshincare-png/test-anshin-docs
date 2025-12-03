@@ -2,6 +2,7 @@
 id: home
 slug: home
 title: ホーム
+subtitle: null
 description: ホーム画面の主要コンテンツ（勤怠、スケジュール、職員、マイページ）の構成と機能の概要を案内します。
 keywords:
   - ホーム

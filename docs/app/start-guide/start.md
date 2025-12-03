@@ -2,6 +2,7 @@
 id: start
 slug: start
 title: 始める前に
+subtitle: null
 description: 管理画面の説明と、会社・職員・事業所の初期登録手順の概要をまとめた導入ガイドです。
 keywords:
   - 導入

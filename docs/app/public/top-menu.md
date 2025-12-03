@@ -2,6 +2,7 @@
 id: top-menu
 slug: top-menu
 title: トップメニュー
+subtitle: null
 description: トップメニューの各機能（ショートカット、ダークモード、通知、アカウントなど）の使い方をまとめています。
 keywords:
   - トップメニュー

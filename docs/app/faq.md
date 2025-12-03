@@ -2,6 +2,7 @@
 id: faq
 slug: faq
 title: よくある質問
+subtitle: null
 description: "よくある質問（FAQ）ページ。料金、ログイン、セキュリティ、機能の概要など、頻繁に寄せられる質問と回答を掲載しています。"
 keywords: ["FAQ", "よくある質問", "料金", "ログイン", "アンシン"]
 noindex: false

@@ -2,6 +2,7 @@
 id: bonus
 slug: bonus
 title: 賞与計算
+subtitle: null
 description: 賞与計算の手順、保険控除や税金の確認方法、編集手順および年末調整に関する注意点を解説します。
 keywords:
   - 賞与計算

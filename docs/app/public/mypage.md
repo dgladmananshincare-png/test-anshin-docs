@@ -2,6 +2,7 @@
 id: mypage
 slug: mypage
 title: マイページ
+subtitle: null
 description: マイページで確認できる基本情報、給与、勤務表、雇用情報の見方と操作方法を説明します。
 keywords:
   - マイページ

@@ -2,6 +2,7 @@
 id: about
 slug: about
 title: ガイドについて
+subtitle: null
 description: アンシンを正しく利用・活用するための総合ガイドです。画面イメージや運用上の注意点を含めて解説しています。
 keywords:
   - ガイド 

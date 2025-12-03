@@ -2,6 +2,7 @@
 id: branch
 slug: branch
 title: ３、事業所設定（権限制限）
+subtitle: null
 description: 事業所（支店）の登録手順と所属職員の設定方法、権限制限に関する注意点を説明します。
 keywords:
   - 事業所設定
