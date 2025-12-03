@@ -1,4 +1,4 @@
-name: Auto Assign Sidebar Position
+name: Post-Merge Cleanup (assign sidebar, imports, components)
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
     types: [closed]
 
 jobs:
-  assign:
+  cleanup:
     if: startsWith(github.head_ref, 'cms/')
     runs-on: ubuntu-latest
     permissions:
@@ -25,7 +25,11 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Determine added markdown files (merged)
+      - name: Install dependencies
+        if: ${{ github.event.action == 'closed' && github.event.pull_request.merged == true }}
+        run: npm ci
+
+      - name: Determine added markdown files (merged PR)
         if: ${{ github.event.action == 'closed' && github.event.pull_request.merged == true }}
         id: added_closed
         uses: actions/github-script@v7
@@ -38,26 +42,39 @@ jobs:
               pull_number: prNumber,
               per_page: 100,
             });
-            const added = files.filter(f => f.status === 'added' && f.filename.endsWith('.md')).map(f => f.filename).join('\n');
+            const added = files
+              .filter(f => f.status === 'added' && f.filename.endsWith('.md'))
+              .map(f => f.filename)
+              .join('\n');
             core.setOutput('added_files', added);
 
       - name: Create added file list variable
         id: collect
         run: |
-          FILES="${{ steps.added_open.outputs.added_files }}${{ steps.added_closed.outputs.added_files }}"
+          FILES="${{ steps.added_closed.outputs.added_files }}"
           echo "FILES=$FILES" >> $GITHUB_ENV
           echo "Collected added files:"; echo "$FILES"
 
-      - name: Run sidebar position assignment
-        if: ${{ env.FILES != '' && github.event.action == 'closed' && github.event.pull_request.merged == true }}
+      - name: Step 1: Assign sidebar positions
+        if: ${{ env.FILES != '' && github.event.pull_request.merged == true }}
         run: |
           node scripts/assign-sidebar-position.js "$FILES"
 
-      - name: Commit changes
-        if: ${{ env.FILES != '' }}
+      - name: Step 2: Add imports based on frontmatter
+        if: ${{ env.FILES != '' && github.event.pull_request.merged == true }}
+        run: |
+          node scripts/add-imports.js $FILES
+
+      - name: Step 3: Add components based on frontmatter
+        if: ${{ env.FILES != '' && github.event.pull_request.merged == true }}
+        run: |
+          node scripts/add-components.js $FILES
+
+      - name: Commit changes to stg
+        if: ${{ env.FILES != '' && github.event.pull_request.merged == true }}
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          git add $FILES
-          git commit -m "Assign sidebar_position to new docs" || echo "No changes"
+          git add $FILES || true
+          git commit -m "chore(ci): post-merge cleanup (sidebar, imports, components)" || echo "No changes"
           git push

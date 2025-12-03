@@ -1,0 +1,71 @@
+name: PR Sanitize and Ensure Frontmatter
+
+on:
+  pull_request:
+    branches: [stg]
+    types: [opened, synchronize]
+
+jobs:
+  fixup:
+    if: startsWith(github.head_ref, 'cms/') && github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 0
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Determine changed markdown files
+        id: changed
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const prNumber = context.payload.pull_request.number;
+            const files = await github.paginate(github.rest.pulls.listFiles, {
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              pull_number: prNumber,
+              per_page: 100,
+            });
+            const md = files
+              .filter(f => f.filename.endsWith('.md') && f.status !== 'removed')
+              .map(f => f.filename)
+              .join('\n');
+            core.setOutput('files', md);
+
+      - name: Set FILES env
+        run: |
+          FILES="${{ steps.changed.outputs.files }}"
+          echo "FILES=$FILES" >> $GITHUB_ENV
+          echo "Changed markdown files:"; echo "$FILES"
+
+      - name: Sanitize markdown
+        if: ${{ env.FILES != '' }}
+        run: |
+          node scripts/sanitize-md.js $FILES
+
+      - name: Ensure frontmatter
+        if: ${{ env.FILES != '' }}
+        run: |
+          node scripts/ensure-frontmatter.js $FILES
+
+      - name: Commit changes
+        if: ${{ env.FILES != '' }}
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add $FILES || true
+          git commit -m "chore(ci): sanitize and ensure frontmatter" || echo "No changes"
+          git push

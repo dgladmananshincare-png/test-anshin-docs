@@ -62,7 +62,8 @@ function setSidebarPositionFrontmatter(content, position){
   const inner = fmMatch[1];
   // Remove any existing sidebar_position
   const lines = inner.split('\n').filter(l => !/^\s*sidebar_position\s*:/.test(l));
-  lines.unshift(line);
+  // Append sidebar_position as the LAST key in the frontmatter block
+  lines.push(line);
   const rebuilt = `---\n${lines.join('\n')}\n---`;
   return content.replace(fullBlock, rebuilt);
 }
