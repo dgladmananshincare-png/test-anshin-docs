@@ -82,13 +82,27 @@ function stripExistingManagedImports(body) {
 
 function ensureImportsAfterFrontmatter(fmBlock, body, importsToInject) {
   // Remove any of our managed imports from the body first to avoid duplicates
-  let cleanedBody = stripExistingManagedImports(body);
+  const cleanedBody = stripExistingManagedImports(body);
 
-  // If there are existing import lines at the very top of the body, keep them; we will
-  // still inject our required imports immediately after frontmatter as requested.
+  // Normalize leading whitespace: we will manage spacing after frontmatter ourselves
+  const bodyTrimmed = cleanedBody.replace(/^\n+/, '');
+
   const importBlock = importsToInject.join('\n');
-  const insert = importBlock.length > 0 ? importBlock + (cleanedBody.startsWith('\n') ? '' : '\n') + '\n' : '';
-  return fmBlock + insert + cleanedBody;
+
+  if (importBlock.length === 0) {
+    // No imports to inject; ensure exactly one blank line after frontmatter
+    return fmBlock + '\n' + bodyTrimmed;
+  }
+
+  // Decide separator after import block:
+  // - If the next non-empty line is an import, keep imports contiguous (single newline)
+  // - Otherwise ensure a blank line (two newlines) before non-import content
+  const lines = bodyTrimmed.split('\n');
+  const first = lines[0] || '';
+  const isImport = /^\s*import\s+.+from\s+['"].+['"];?\s*$/.test(first);
+  const afterImportSep = isImport ? '\n' : '\n\n';
+
+  return fmBlock + '\n' + importBlock + afterImportSep + bodyTrimmed;
 }
 
 function valueIsEmpty(v) {

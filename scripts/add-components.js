@@ -115,19 +115,30 @@ function findImportBlockEndIndex(lines) {
 
 function injectComponentsAfterImports(fmBlock, body, components) {
   const lines = body.split(/\n/);
-  const insertionIndex = findImportBlockEndIndex(lines);
   const insert = components.join('\n');
   if (insert.length === 0) return fmBlock + body; // nothing to inject
 
-  // Ensure a blank line before components if previous line isn't blank and exists
-  if (insertionIndex > 0 && lines[insertionIndex - 1] && lines[insertionIndex - 1].trim() !== '') {
-    lines.splice(insertionIndex, 0, '');
+  let insertionIndex = findImportBlockEndIndex(lines);
+
+  // Normalize the whitespace after the import block (or after frontmatter if no imports):
+  // Remove any blank lines immediately following the imports, then add exactly one.
+  while (insertionIndex < lines.length && lines[insertionIndex].trim() === '') {
+    lines.splice(insertionIndex, 1);
   }
+  // If there are no imports and the first line isn't blank, add a blank line at the very top
+  if (insertionIndex === 0 && (lines[0] && lines[0].trim() !== '')) {
+    lines.splice(0, 0, '');
+    insertionIndex = 1;
+  } else {
+    // Ensure exactly one blank line after imports
+    lines.splice(insertionIndex, 0, '');
+    insertionIndex += 1;
+  }
+
   // Insert components and ensure a trailing blank line after the block for readability
-  lines.splice(insertionIndex + (insertionIndex > 0 && lines[insertionIndex - 1] && lines[insertionIndex - 1].trim() === '' ? 0 : 1), 0);
-  // After adjusting for potential blank line insertion, compute final index to insert components
-  const finalIndex = findImportBlockEndIndex(lines);
-  lines.splice(finalIndex, 0, insert, '');
+  lines.splice(insertionIndex, 0, insert);
+  lines.splice(insertionIndex + 1, 0, '');
+
   return fmBlock + lines.join('\n');
 }
 
