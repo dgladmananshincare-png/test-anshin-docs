@@ -141,8 +141,9 @@ function ensureImportsAfterFrontmatter(fmBlock, body, importsToInject) {
   const importBlock = importsToInject.join('\n');
 
   if (importBlock.length === 0) {
-    // No imports to inject; keep markers contiguous with a single blank line after top marker
-    return fmBlock + '\n' + before + '\n\n' + after.replace(BOTTOM_MARKER, BOTTOM_MARKER);
+    // No imports to inject; ensure canonical markers remain with a single blank line between them
+    const rebuiltRegion = `${TOP_MARKER}\n\n${BOTTOM_MARKER}\n`;
+    return fmBlock + '\n' + before + rebuiltRegion + remainder;
   }
 
   // Decide separator after import block:

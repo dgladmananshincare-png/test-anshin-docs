@@ -47,8 +47,8 @@ const DEFAULTS = {
   title: '',
   subtitle: null,
   // sidebar_position: intentionally not added when missing
-  description: 'TODO: Replace with a meaningful description.',
-  keywords: ['Placeholder'],
+  description: '近日公開',
+  keywords: ["例: 管理画面", "例: 初期設定", "例: アンシン"],
   noindex: true,
 };
 
@@ -94,22 +94,53 @@ function parseFrontmatterAndBody(src) {
 }
 
 function dumpFrontmatterOrdered(fm) {
-  // Enforce ordering and include only expected keys in specified order
-  const ordered = {};
+  // Compute ordered values with defaults applied (without mutating fm)
+  const val = {};
   for (const key of EXPECTED_KEYS) {
-    if (Object.prototype.hasOwnProperty.call(fm, key)) {
-      ordered[key] = fm[key];
-    } else {
-      // Add defaults for expected keys
-      ordered[key] = DEFAULTS[key];
-    }
+    val[key] = Object.prototype.hasOwnProperty.call(fm, key) ? fm[key] : DEFAULTS[key];
   }
-  // Preserve sidebar_position only if present originally
-  if (Object.prototype.hasOwnProperty.call(fm, 'sidebar_position')) {
-    ordered.sidebar_position = fm.sidebar_position;
+  const hasSidebar = Object.prototype.hasOwnProperty.call(fm, 'sidebar_position');
+
+  // Decide whether to include instructional comments
+  const includeDescComments = String(val.description) === '近日公開';
+  const keywordsArr = Array.isArray(val.keywords) ? val.keywords : [val.keywords].filter(Boolean);
+  const includeKeywordComments = keywordsArr.some(k => typeof k === 'string' && k.includes('例:'));
+
+  // Build YAML manually to include inline comments above description/keywords when applicable
+  const lines = [];
+  lines.push('---');
+  lines.push(`id: ${String(val.id)}`);
+  lines.push(`slug: ${String(val.slug)}`);
+  lines.push(`title: ${String(val.title)}`);
+  lines.push(`subtitle: ${val.subtitle === null ? 'null' : String(val.subtitle)}`);
+
+  if (includeDescComments) {
+    lines.push('# このフィールドはSEOのためのページ説明文です。検索エンジンやSNSで表示される要約になります。');
+    lines.push('# 完成したら、noindexフィールドをfalseにしてページをインデックス可能にしてください。');
   }
-  const dumped = yaml.dump(ordered, { lineWidth: 120 });
-  return `---\n${dumped}---\n`;
+  // Quote description if it contains spaces or non-ASCII to be safe
+  const descVal = typeof val.description === 'string' ? JSON.stringify(val.description) : JSON.stringify(String(val.description));
+  lines.push(`description: ${descVal}`);
+
+  if (includeKeywordComments) {
+    lines.push('# このフィールドはSEO用のキーワードリストです。各キーワードを1行ずつ「-」で記述してください。');
+  }
+  lines.push('keywords:');
+  for (const k of keywordsArr) {
+    const kv = typeof k === 'string' ? k : String(k);
+    // Quote only when needed
+    const needsQuote = /[:#\-]/.test(kv) || /\s/.test(kv) || /['"]/g.test(kv);
+    const rendered = needsQuote ? `'${kv.replace(/'/g, "''")}'` : kv;
+    lines.push(`  - ${rendered}`);
+  }
+
+  lines.push(`noindex: ${val.noindex === true ? 'true' : val.noindex === false ? 'false' : String(val.noindex)}`);
+  if (hasSidebar) {
+    lines.push(`sidebar_position: ${fm.sidebar_position}`);
+  }
+  lines.push('---');
+  lines.push('');
+  return lines.join('\n');
 }
 
 function ensureFrontmatter(fm) {
