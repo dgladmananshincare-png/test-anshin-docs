@@ -5,11 +5,11 @@ title: 賞与明細
 subtitle: null
 description: 賞与明細の確認方法と表示箇所（給与計算画面およびマイページ）について説明します。
 keywords:
- - 賞与明細
- - 賞与
- - 明細
- - 給与
- - アンシン
+  - 賞与明細
+  - 賞与
+  - 明細
+  - 給与
+  - アンシン
 noindex: false
 sidebar_position: 7
 ---
