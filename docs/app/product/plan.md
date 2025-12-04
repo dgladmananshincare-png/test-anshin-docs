@@ -3,13 +3,19 @@ id: plan
 slug: plan
 title: サービス提供計画書
 subtitle: 「ご利用者」→「計画書」→「サービス選定と目標・週間-月間スケジュール・利用票作成」
-description: Placeholder page
+# TODO: このフィールドはSEOのためのページ説明文です。検索エンジンやSNSで表示される要約になります。
+# 完成したら、noindexフィールドをfalseにしてページをインデックス可能にしてください。
+description: 近日公開
+# TODO: このフィールドはSEO用のキーワードリストです。各キーワードを1行ずつ「-」で記述してください。
 keywords:
-  - placeholder
+  - '例: 管理画面'
+  - '例: 初期設定'
+  - '例: アンシン'
 noindex: true
 sidebar_position: 6
 ---
 
+<!--@ ここから下は自動生成領域です。編集しないでください -->
 import Head from '@docusaurus/Head';
 import Subtitle from '@site/src/components/Subtitle';
 
@@ -17,6 +23,8 @@ import Subtitle from '@site/src/components/Subtitle';
   <meta name="robots" content="noindex, nofollow" />
 </Head>
 <Subtitle text={frontMatter.subtitle} />
+
+<!--# この行より上は自動生成されます。編集しないでください -->
 
 ## すみません。
 

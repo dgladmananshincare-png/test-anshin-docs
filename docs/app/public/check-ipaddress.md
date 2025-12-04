@@ -13,9 +13,13 @@ keywords:
 noindex: false
 sidebar_position: 5
 ---
+
+<!--@ ここから下は自動生成領域です。編集しないでください -->
 import Subtitle from '@site/src/components/Subtitle';
 
 <Subtitle text={frontMatter.subtitle} />
+
+<!--# この行より上は自動生成されます。編集しないでください -->
 
 1. [通信制御（権限: 職員-会社管理）](#public-104-1)
 
