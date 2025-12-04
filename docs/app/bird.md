@@ -12,10 +12,20 @@ keywords:
   - '例: 初期設定'
   - '例: アンシン'
 noindex: true
+sidebar_position: 11
 ---
 
 <!--@ ここから下は自動生成領域です。編集しないでください -->
+import Subtitle from '@site/src/components/Subtitle';
+import Head from '@docusaurus/Head';
+
+<Head>
+  <meta name="robots" content="noindex, nofollow" />
+</Head>
+<Subtitle text={frontMatter.subtitle} />
+
 <!--# この行より上は自動生成されます。編集しないでください -->
+
 # This is a bird
 
 ![bird](/img/bird.jpg "bird")
