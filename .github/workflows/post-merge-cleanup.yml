@@ -60,6 +60,11 @@ jobs:
         run: |
           node scripts/assign-sidebar-position.js "$FILES"
 
+      - name: Step 1.5 - Clear auto-generated region (between markers)
+        if: ${{ env.FILES != '' && github.event.pull_request.merged == true }}
+        run: |
+          node scripts/clear-auto-region.js $FILES
+
       - name: Step 2 - Add imports based on frontmatter
         if: ${{ env.FILES != '' && github.event.pull_request.merged == true }}
         run: |

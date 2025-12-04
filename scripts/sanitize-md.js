@@ -18,6 +18,13 @@ const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
 const sanitizeHtml = require('sanitize-html');
+// Auto-generated region markers (Japanese)
+// New robust detection: top starts with <!--@, bottom starts with <!--#
+const TOP_MARKER_PREFIX = '<!--@';
+const BOTTOM_MARKER_PREFIX = '<!--#';
+// Canonical recommended strings (still used when inserting new markers)
+const TOP_MARKER = '<!--@ ここから下は自動生成領域です。編集しないでください -->';
+const BOTTOM_MARKER = '<!--# この行より上は自動生成されます。編集しないでください -->';
 
 function readFileSafe(p) {
   try {
@@ -175,9 +182,16 @@ function sanitizeMarkdownBody(body) {
   // Match Head block with robots meta; be flexible with spacing/newlines
   const HEAD_BLOCK_RE = /<Head>\s*<meta\s+name=["']robots["']\s+content=["']noindex,\s*nofollow["']\s*\/>\s*<\/Head>/gs;
 
+  // Tokenize markers to preserve them across sanitize-html
+  // Preserve any line starting with the marker prefixes
+  const MARKER_TOP_RE = /^\s*<!--@.*$/gm;
+  const MARKER_BOTTOM_RE = /^\s*<!--#.*$/gm;
+
   let working = body
     .replace(SUBTITLE_RE, (m) => pushPlaceholder(m, 'SUBTITLE'))
-    .replace(HEAD_BLOCK_RE, (m) => pushPlaceholder(m, 'HEAD'));
+    .replace(HEAD_BLOCK_RE, (m) => pushPlaceholder(m, 'HEAD'))
+    .replace(MARKER_TOP_RE, (m) => pushPlaceholder(m, 'TOP_MARKER'))
+    .replace(MARKER_BOTTOM_RE, (m) => pushPlaceholder(m, 'BOTTOM_MARKER'));
 
   // Neutralize dangerous markdown link/image URLs (e.g., javascript: in [link](...) or ![img](...))
   const neutralizeUrl = (url) => {
@@ -242,4 +256,21 @@ function main() {
   }
 }
 
-main();
+// Export for tests
+module.exports = {
+  parseFrontmatterAndBody,
+  dumpFrontmatter,
+  sanitizeFrontmatter,
+  sanitizeMarkdownBody,
+  processFile,
+  main,
+  TOP_MARKER_PREFIX,
+  BOTTOM_MARKER_PREFIX,
+  TOP_MARKER,
+  BOTTOM_MARKER,
+};
+
+// Run only when executed directly
+if (require.main === module) {
+  main();
+}

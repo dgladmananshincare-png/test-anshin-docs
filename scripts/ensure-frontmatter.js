@@ -22,6 +22,12 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+// Auto-generated region markers (Japanese)
+// Robust detection: top starts with <!--@, bottom starts with <!--#
+const TOP_MARKER_PREFIX = '<!--@';
+const BOTTOM_MARKER_PREFIX = '<!--#';
+const TOP_MARKER = '<!--@ ここから下は自動生成領域です。編集しないでください -->';
+const BOTTOM_MARKER = '<!--# この行より上は自動生成されます。編集しないでください -->';
 
 // Enforced order (sidebar_position intentionally omitted unless already present)
 const EXPECTED_KEYS = [
@@ -143,7 +149,21 @@ function processFile(filePath) {
   const parsed = parseFrontmatterAndBody(raw);
   const fmEnsured = ensureFrontmatter(parsed.fm);
   const fmDump = dumpFrontmatterOrdered(fmEnsured);
-  const out = fmDump + '\n' + parsed.body.trimStart() + (parsed.body.endsWith('\n') ? '' : '\n');
+  // Ensure markers exist right after frontmatter: if missing, insert an empty auto-generated region
+  let body = parsed.body.trimStart();
+  const hasTop = /^\s*<!--@/.test(body);
+  const hasBottom = /^([\s\S]*?)<!--#/.test(body);
+  if (!hasTop && !hasBottom) {
+    // Insert markers immediately after frontmatter with no extra blank line between them
+    body = `${TOP_MARKER}\n${BOTTOM_MARKER}\n${body.trimStart()}`;
+  } else if (hasTop && !hasBottom) {
+    console.error('[ensure-frontmatter] Marker mismatch: top present without bottom.');
+    process.exit(1);
+  } else if (!hasTop && hasBottom) {
+    console.error('[ensure-frontmatter] Marker mismatch: bottom present without top.');
+    process.exit(1);
+  }
+  const out = fmDump + '\n' + body + (body.endsWith('\n') ? '' : '\n');
   writeFileSafe(filePath, out);
   console.log(`[ensure-frontmatter] Updated ${filePath}`);
 }
@@ -169,4 +189,16 @@ function main() {
   }
 }
 
-main();
+module.exports = {
+  parseFrontmatterAndBody,
+  dumpFrontmatterOrdered,
+  ensureFrontmatter,
+  processFile,
+  main,
+  TOP_MARKER,
+  BOTTOM_MARKER,
+};
+
+if (require.main === module) {
+  main();
+}

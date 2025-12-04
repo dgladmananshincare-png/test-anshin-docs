@@ -23,6 +23,19 @@
 const fs = require('fs');
 const path = require('path');
 const yaml = require('js-yaml');
+const { TOP_MARKER_PREFIX, BOTTOM_MARKER_PREFIX, TOP_MARKER, BOTTOM_MARKER } = require('./sanitize-md');
+function validateMarkersOrExit(body, fileLabel = '') {
+  const topCount = (body.match(/^\s*<!--@.*$/gm) || []).length;
+  const bottomCount = (body.match(/^\s*<!--#.*$/gm) || []).length;
+  if (topCount > 1 || bottomCount > 1) {
+    console.error(`[add-components] Marker duplication detected ${fileLabel ? 'in ' + fileLabel : ''}.`);
+    process.exit(1);
+  }
+  if ((topCount === 1 && bottomCount === 0) || (topCount === 0 && bottomCount === 1)) {
+    console.error(`[add-components] Marker mismatch (one present without the other) ${fileLabel ? 'in ' + fileLabel : ''}.`);
+    process.exit(1);
+  }
+}
 
 const HEAD_BLOCK = `<Head>
   <meta name="robots" content="noindex, nofollow" />
@@ -114,32 +127,54 @@ function findImportBlockEndIndex(lines) {
 }
 
 function injectComponentsAfterImports(fmBlock, body, components) {
-  const lines = body.split(/\n/);
+  // Ensure markers; if missing, insert empty region at top of body
+  let workingBody = body;
+  const hasTop = /^\s*<!--@/.test(workingBody);
+  const hasBottom = /^([\s\S]*?)<!--#/.test(workingBody);
+  validateMarkersOrExit(workingBody, 'body');
+  if (!hasTop || !hasBottom) {
+    // Insert markers immediately after frontmatter
+    workingBody = `${TOP_MARKER}\n${BOTTOM_MARKER}\n` + workingBody.trimStart();
+  }
+
+  // Remove everything between markers to rebuild from scratch
+  const markerLines = workingBody.split('\n');
+  let startLine = -1, endLine = -1;
+  for (let i = 0; i < markerLines.length; i++) {
+    const line = markerLines[i];
+    if (startLine === -1 && line.trim().startsWith(TOP_MARKER_PREFIX)) startLine = i;
+    if (endLine === -1 && line.trim().startsWith(BOTTOM_MARKER_PREFIX)) endLine = i;
+  }
+  if (startLine === -1 || endLine === -1 || endLine < startLine) {
+    console.error('[add-components] Marker positions invalid.');
+    process.exit(1);
+  }
+  const startIdx = markerLines.slice(0, startLine + 1).join('\n').length;
+  const endOfBottomLine = markerLines.slice(0, endLine + 1).join('\n').length;
+  const before = workingBody.slice(0, startIdx);
+  const remainder = workingBody.slice(endOfBottomLine);
+
   const insert = components.join('\n');
-  if (insert.length === 0) return fmBlock + body; // nothing to inject
-
-  let insertionIndex = findImportBlockEndIndex(lines);
-
-  // Normalize the whitespace after the import block (or after frontmatter if no imports):
-  // Remove any blank lines immediately following the imports, then add exactly one.
-  while (insertionIndex < lines.length && lines[insertionIndex].trim() === '') {
-    lines.splice(insertionIndex, 1);
+  // Build fresh region: top marker, blank line, keep existing imports just above components if present
+  // We place components after any import lines found immediately after the top marker
+  const regionLines = workingBody.slice(startIdx, markerLines.slice(0, endLine).join('\n').length).split('\n').map((l) => l);
+  // Normalize: ensure a blank line after any imports
+  const importEnd = findImportBlockEndIndex(regionLines);
+  // Remove trailing blanks after imports
+  while (importEnd < regionLines.length && regionLines[importEnd].trim() === '') {
+    regionLines.splice(importEnd, 1);
   }
-  // If there are no imports and the first line isn't blank, add a blank line at the very top
-  if (insertionIndex === 0 && (lines[0] && lines[0].trim() !== '')) {
-    lines.splice(0, 0, '');
-    insertionIndex = 1;
-  } else {
-    // Ensure exactly one blank line after imports
-    lines.splice(insertionIndex, 0, '');
-    insertionIndex += 1;
+  // Ensure exactly one blank line after imports
+  regionLines.splice(importEnd, 0, '');
+  // Insert components after imports
+  if (insert.length > 0) {
+    regionLines.splice(importEnd + 1, 0, insert);
+    // trailing blank for readability
+    regionLines.splice(importEnd + 2, 0, '');
   }
-
-  // Insert components and ensure a trailing blank line after the block for readability
-  lines.splice(insertionIndex, 0, insert);
-  lines.splice(insertionIndex + 1, 0, '');
-
-  return fmBlock + lines.join('\n');
+  // Rebuild
+  const rebuiltRegion = before + '\n' + regionLines.filter((l, i) => !(i === 0 && l === '')).join('\n') + '\n' + BOTTOM_MARKER;
+  return fmBlock + rebuiltRegion + remainder;
 }
 
 function processFile(filePath) {
@@ -196,4 +231,17 @@ function main() {
   }
 }
 
-main();
+module.exports = {
+  parseFrontmatterAndBody,
+  stripManagedComponents,
+  findImportBlockEndIndex,
+  injectComponentsAfterImports,
+  processFile,
+  main,
+  HEAD_BLOCK,
+  SUBTITLE_LINE,
+};
+
+if (require.main === module) {
+  main();
+}
