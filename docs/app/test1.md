@@ -12,8 +12,16 @@ keywords:
   - '例: 初期設定'
   - '例: アンシン'
 noindex: true
+sidebar_position: 11
 ---
 
 <!--@ ここから下は自動生成領域です。編集しないでください -->
+import Head from '@docusaurus/Head';
+
+<Head>
+  <meta name="robots" content="noindex, nofollow" />
+</Head>
+
 <!--# この行より上は自動生成されます。編集しないでください -->
+
 ![picture of bird](/img/bird.jpg "bird")
